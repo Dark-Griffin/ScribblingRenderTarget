@@ -25,6 +25,7 @@ def coloring_render_in_progress_line(args)
     args.state.coloring_click_positions.each_with_index do |pos, i|
         if i < args.state.coloring_click_positions.length - 1
           fill_with_rotated_rect(args, pos, args.state.coloring_click_positions[i+1], args.state.coloring_thickness)
+          draw_brush_at_joint_point(args, args.state.coloring_click_positions[i+1], args.state.coloring_thickness)
         end
     end
 end
@@ -39,6 +40,7 @@ def cache_sprites_to_render_target(args)
         if i < args.state.coloring_click_positions.length - 1
             args.outputs[args.state.coloring_rt_name].clear_before_render = false
             fill_with_rotated_rect(args, pos, args.state.coloring_click_positions[i+1], args.state.coloring_thickness, true)
+            draw_brush_at_joint_point(args, args.state.coloring_click_positions[i+1], args.state.coloring_thickness, true)
         end
     end
 end
@@ -76,6 +78,32 @@ def fill_with_rotated_rect(args, pos1,pos2, thickness, to_render_target=false)
       anchor_x: 0.5,
       anchor_y: 0.5
     }
+    end
+end
+
+def draw_brush_at_joint_point(args, pos, thickness, to_render_target=false)
+    if to_render_target
+        args.outputs[args.state.coloring_rt_name].sprites << {
+            x: pos.x,
+            y: pos.y,
+            w: thickness,
+            h: thickness,
+            path: 'sprites/circle/green.png',
+            angle: 0,
+            anchor_x: 0.5,
+            anchor_y: 0.5
+        }
+    else
+        args.outputs.sprites << {
+            x: pos.x,
+            y: pos.y,
+            w: thickness,
+            h: thickness,
+            path: 'sprites/circle/black.png',
+            angle: 0,
+            anchor_x: 0.5,
+            anchor_y: 0.5
+        }
     end
 end
 
