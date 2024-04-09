@@ -14,8 +14,12 @@ above your tick function.
 
 Now you can call the following commands in your tick function.
 
-setup_coloring(args)
-Sets up the Render Texture we will be coloring to.  Recommended to call only the first tick as a setup process.
+setup_coloring(args, rt_name)
+Sets up the Render Target we will be coloring to.  Recommended to call only the first tick as a setup process.
+
+Optionally, you can pass a name pointer into the rt_name function, the tool will use this rt throughout.  For example: setup_coloring(args, :my_custom_rt_name) would use the :my_custom_rt_name render target as the drawing surface.  If left undefined, the render target name of :rt is used.
+
+For further customization of the coloring surface, such as to make a smaller drawing area, see the setup_coloring function in the rtcoloring.rb file.
 
 coloring_track_mouse_position(args)
 Tracks the current mouse position and adds it to the current internal stroke array.  Call this every tick you want the current mouse position to be part of a line.  Example: calling this when mouse is held down will ensure to capture every mouse position each tick.
@@ -37,4 +41,4 @@ args.state.coloring_thickness += 5
 Change the thickness of the rendered line we will draw with the internal stroke array.  You can set this value to any valid integer, the stroke can even handle 0 (though no output will happen in that case.)
 
 Additional Setup:
-I highly recommend replacing the brush texture paths with something more sensible for clean output, like a plain circle and a plain square sprite.  I used the DragonRuby defaults so you can see how the sprites are put together in the demo.
+I highly recommend replacing the brush texture sprite paths with something more sensible for clean output, like a plain circle and a plain square sprite.  I used the DragonRuby defaults so you can see how the sprites are put together in the demo.

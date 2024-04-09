@@ -14,7 +14,7 @@ def tick args
 
   #create a rendertarget to draw finished line sprites to
   if args.state.tick_count == 0
-    setup_coloring(args)
+    setup_coloring(args, :rt)
   end
 
   #draw the render target to the screen so we can see our coloring

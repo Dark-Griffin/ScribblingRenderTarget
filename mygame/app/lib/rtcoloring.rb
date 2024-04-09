@@ -1,12 +1,12 @@
 #coloring a line onto a render target
 # by Gawain Doell (DarkGriffin) 2024
 
-def setup_coloring(args)
+def setup_coloring(args, rt_name=:rt)
   args.state.coloring_click_positions ||= []
   args.state.coloring_thickness ||= 10
-  args.state.coloring_rt_name ||= :rt
+  args.state.coloring_rt_name ||= rt_name
   #create the rt if it doesn't exist
-  putz("Creating render target")
+  #putz("Creating render target")
   args.outputs[args.state.coloring_rt_name].transient!
   args.outputs[args.state.coloring_rt_name].clear_before_render = false
   args.outputs[args.state.coloring_rt_name].w = 1280
