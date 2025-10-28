@@ -2,6 +2,8 @@
 
 Code to allow drawing lines with the mouse like in a drawing software.  The magic is done inside lib/rtcoloring.rb file.
 
+![Screenshot showing a single sprite that has been used as a stamp to draw various parts of a strange looking cat head in order to demonstrate the code works](scribbling_rt_sample.png?raw=true "What this can do with a single rt and some bad mouse drawing skills")
+
 ## Instructions:
 To run the demonstration, run the dragonruby.exe file.
 
